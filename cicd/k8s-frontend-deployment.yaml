@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: 5letters-frontend
-          image: hub.66bit.ru/urfu-2023-rtf/Atomic/miniApp_5/frontend:latest
+          image: hub.66bit.ru/urfu-2023-rtf/atomic/miniapp_5/frontend:latest
           ports:
             - containerPort: 80
       imagePullSecrets:
