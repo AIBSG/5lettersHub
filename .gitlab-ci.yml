@@ -16,7 +16,7 @@ create_namespace-and_secret:
   script:
     - kubectl create namespace atomic
     - kubectl create secret generic 5letters-secret --from-file=.dockerconfigjson=$CR_CONFIG --type=kubernetes.io/dockerconfigjson --namespace=atomic
-    rules:
+  rules:
     - if: $CI_COMMIT_BRANCH == "cicd"
       when: manual
 
