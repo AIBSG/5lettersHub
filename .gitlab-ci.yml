@@ -21,7 +21,7 @@ create_namespace-and_secret:
       when: manual
 
 make_backend_docker_image:
-  stage: make_docker_images
+  stage: make-docker-images
   image: docker:latest
   before_script:
     - *before-script-docker-registry-login
@@ -34,7 +34,7 @@ make_backend_docker_image:
       when: manual
 
 make_frontend_docker_image:
-  stage: make_docker_images
+  stage: make-docker-images
   image: docker:latest
   before_script:
     - *before-script-docker-registry-login
