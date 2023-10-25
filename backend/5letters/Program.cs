@@ -1,4 +1,5 @@
 using _5letters.Data;
+using _5letters.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace _5letters
@@ -14,7 +15,7 @@ namespace _5letters
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options => options.UseRoutePrefix("api"));
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
@@ -40,8 +41,6 @@ namespace _5letters
             app.UseAuthorization();
 
             app.MapControllers();
-            app.UsePathBase(new PathString("/api"));
-            app.UseRouting();
 
             app.Run();
         }
