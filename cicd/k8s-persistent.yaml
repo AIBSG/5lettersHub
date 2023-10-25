@@ -61,7 +61,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 5letters-postgres-service
+  name: five-letters-postgres-service
   namespace: atomic
 spec:
   selector:
@@ -74,7 +74,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 5letters-backend-service
+  name: five-letters-backend-service
   namespace: atomic
 spec:
   selector:
@@ -87,7 +87,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 5letters-frontend-service
+  name: five-letters-frontend-service
   namespace: atomic
 spec:
   selector:
@@ -112,14 +112,14 @@ spec:
             path: /
             backend:
               service:
-                name: 5letters-frontend-service
+                name: five-letters-frontend-service
                 port:
                   number: 80
           - pathType: Prefix
             path: /api
             backend:
               service:
-                name: 5letters-backend-service
+                name: five-letters-backend-service
                 port:
                   number: 80
 
