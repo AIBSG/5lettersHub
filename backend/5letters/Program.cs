@@ -31,6 +31,12 @@ namespace _5letters
                 options.SwaggerEndpoint("/api/swagger/v1/swagger.json", "Five Letters API v1");
                 options.RoutePrefix = "api/swagger";
             });
+            app.UseCors(builder => builder
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
 
             using (var scope = app.Services.CreateScope())
             {
