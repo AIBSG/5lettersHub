@@ -1,0 +1,49 @@
+variables:
+  BACK_TAG_LATEST: $CI_REGISTRY_IMAGE/backend:latest
+  FRONT_TAG_LATEST: $CI_REGISTRY_IMAGE/frontend:latest
+stages:
+  - make-docker-images
+  - deploy
+
+.before script docker registry login: &before-script-docker-registry-login
+  - mkdir ~/.docker
+  - cat $CR_CONFIG > ~/.docker/config.json
+
+make_backend_docker_image:
+  stage: make-docker-images
+  image: docker:latest
+  before_script:
+    - *before-script-docker-registry-login
+  script:
+    - cd backend
+    - docker build --pull -t $BACK_TAG_LATEST .
+    - docker push $BACK_TAG_LATEST
+  rules:
+    - if: $CI_COMMIT_BRANCH == "cicd"
+      when: manual
+
+make_frontend_docker_image:
+  stage: make-docker-images
+  image: docker:latest
+  before_script:
+    - *before-script-docker-registry-login
+  script:
+    - cd frontend
+    - docker build --pull -t $FRONT_TAG_LATEST .
+    - docker push $FRONT_TAG_LATEST
+  rules:
+    - if: $CI_COMMIT_BRANCH == "cicd"
+      when: manual
+
+deploy:
+  stage: deploy
+  image: hub.66bit.ru/shared/stk8s:1.26.2
+  script:
+    - kubectl delete -f ./cicd/k8s-backend-deployment.yaml
+    - kubectl apply -f ./cicd/k8s-backend-deployment.yaml
+    - kubectl delete -f ./cicd/k8s-frontend-deployment.yaml
+    - kubectl apply -f ./cicd/k8s-frontend-deployment.yaml
+    - kubectl apply -f ./cicd/k8s-persistent.yaml
+  rules:
+    - if: $CI_COMMIT_BRANCH == "cicd"
+      when: manual

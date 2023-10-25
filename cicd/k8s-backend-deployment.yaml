@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 5letters-backend
+  namespace: atomic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: 5letters-backend
+  template:
+    metadata:
+      labels:
+        project: 5letters-backend
+    spec:
+      containers:
+        - name: 5letters-backend
+          image: hub.66bit.ru/urfu-2023-rtf/atomic/miniapp_5/backend:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+      imagePullSecrets:
+        - name: 5letters-secret
+

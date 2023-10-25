@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 5letters-frontend
+  namespace: atomic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: 5letters-frontend
+  template:
+    metadata:
+      labels:
+        project: 5letters-frontend
+    spec:
+      containers:
+        - name: 5letters-frontend
+          image: hub.66bit.ru/urfu-2023-rtf/atomic/miniapp_5/frontend:latest
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: 5letters-secret
+
