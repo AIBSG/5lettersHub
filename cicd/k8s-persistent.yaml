@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: 5letters-postgres
+  namespace: atomic
+spec:
+  selector:
+    matchLabels:
+      app: 5letters-postgres
+  serviceName: "5letters-postgres"
+  replicas: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: 5letters-postgres
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: 5letters-postgres
+          image: postgres:15-alpine
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: 5letters-postgres
+              mountPath: /var/lib/postgresql/data
+          env:
+            - name: POSTGRES_USER
+              value: 5lettersuser
+            - name: POSTGRES_PASSWORD
+              value: vd2f53ZTNr2vFbzenPZ3dY7FSDAEuS
+            - name: POSTGRES_DB
+              value: 5letters
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+      initContainers:
+        - name: 5letters-rights-to-data
+          image: busybox
+          command:
+            [
+              "sh",
+              "-c",
+              "mkdir -p /var/lib/postgresql/data/pgdata && chown -R 999:999 /var/lib/postgresql/data/pgdata",
+            ]
+          securityContext:
+            runAsUser: 0
+            privileged: true
+          volumeMounts:
+            - name: 5letters-postgres
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: 5letters-postgres-vc
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "rook-ceph-block"
+        resources:
+          requests:
+            storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 5letters-postgres-service
+  namespace: atomic
+spec:
+  selector:
+    app: 5letters-postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 5letters-backend-service
+  namespace: atomic
+spec:
+  selector:
+    project: 5letters-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 5letters-frontend-service
+  namespace: atomic
+spec:
+  selector:
+    project: 5letters-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 5letters-ingress
+  namespace: atomic
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "5letters.stk8s.66bit.ru"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: 5letters-frontend-service
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: /api
+            backend:
+              service:
+                name: 5letters-backend-service
+                port:
+                  number: 80
+
