@@ -19,7 +19,7 @@ make_backend_docker_image:
     - docker build --pull -t $BACK_TAG_LATEST .
     - docker push $BACK_TAG_LATEST
   rules:
-    - if: $CI_COMMIT_BRANCH == "cicd"
+    - if: $CI_COMMIT_BRANCH == "main"
       when: manual
 
 make_frontend_docker_image:
@@ -32,7 +32,7 @@ make_frontend_docker_image:
     - docker build --pull -t $FRONT_TAG_LATEST .
     - docker push $FRONT_TAG_LATEST
   rules:
-    - if: $CI_COMMIT_BRANCH == "cicd"
+    - if: $CI_COMMIT_BRANCH == "main"
       when: manual
 
 deploy:
@@ -45,5 +45,5 @@ deploy:
     - kubectl apply -f ./cicd/k8s-frontend-deployment.yaml
     - kubectl apply -f ./cicd/k8s-persistent.yaml
   rules:
-    - if: $CI_COMMIT_BRANCH == "cicd"
+    - if: $CI_COMMIT_BRANCH == "main"
       when: manual
