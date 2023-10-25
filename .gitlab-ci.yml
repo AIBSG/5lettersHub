@@ -1,6 +1,6 @@
 variables:
-  BACK_TAG_LATEST: $CI_REGISTRY_IMAGE/back:latest
-  FRONT_TAG_LATEST: $CI_REGISTRY_IMAGE/front:latest
+  BACK_TAG_LATEST: $CI_REGISTRY_IMAGE/backend:latest
+  FRONT_TAG_LATEST: $CI_REGISTRY_IMAGE/frontend:latest
 stages:
   - make-docker-images
   - deploy
