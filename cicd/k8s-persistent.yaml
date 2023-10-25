@@ -50,7 +50,7 @@ spec:
               mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
-        name: 5letters-postgres-vc
+        name: 5letters-postgres
       spec:
         accessModes: ["ReadWriteOnce"]
         storageClassName: "rook-ceph-block"
