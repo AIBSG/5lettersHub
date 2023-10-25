@@ -109,17 +109,16 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: /front
+            path: /
             backend:
               service:
                 name: five-letters-frontend-service
                 port:
                   number: 80
           - pathType: Prefix
-            path: /
+            path: /api
             backend:
               service:
                 name: five-letters-backend-service
                 port:
                   number: 80
-

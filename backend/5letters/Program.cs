@@ -21,9 +21,15 @@ namespace _5letters
             // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
-
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwagger(options =>
+            {
+                options.RouteTemplate = "api/swagger/{documentname}/swagger.json";
+            });
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/api/swagger/v1/swagger.json", "Five Letters API v1");
+                options.RoutePrefix = "api/swagger";
+            });
 
             using (var scope = app.Services.CreateScope())
             {
@@ -34,6 +40,8 @@ namespace _5letters
             app.UseAuthorization();
 
             app.MapControllers();
+            app.UsePathBase(new PathString("/api"));
+            app.UseRouting();
 
             app.Run();
         }
