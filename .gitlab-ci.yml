@@ -2,23 +2,12 @@ variables:
   BACK_TAG_LATEST: $CI_REGISTRY_IMAGE/back:latest
   FRONT_TAG_LATEST: $CI_REGISTRY_IMAGE/front:latest
 stages:
-  - init
   - make-docker-images
   - deploy
 
 .before script docker registry login: &before-script-docker-registry-login
   - mkdir ~/.docker
   - cat $CR_CONFIG > ~/.docker/config.json
-
-create_namespace-and_secret:
-  stage: init
-  image: hub.66bit.ru/shared/stk8s:1.26.2
-  script:
-    - kubectl create namespace atomic
-    - kubectl create secret generic 5letters-secret --from-file=.dockerconfigjson=$CR_CONFIG --type=kubernetes.io/dockerconfigjson --namespace=atomic
-  rules:
-    - if: $CI_COMMIT_BRANCH == "cicd"
-      when: manual
 
 make_backend_docker_image:
   stage: make-docker-images
