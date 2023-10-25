@@ -40,7 +40,7 @@ make_frontend_docker_image:
     - *before-script-docker-registry-login
   script:
     - cd frontend
-    - docker build --pull -t $BACK_TAG_LATEST .
+    - docker build --pull -t $FRONT_TAG_LATEST .
     - docker push $FRONT_TAG_LATEST
   rules:
     - if: $CI_COMMIT_BRANCH == "cicd"
