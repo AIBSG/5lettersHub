@@ -34,8 +34,10 @@
         </e>
         <e p="Services" t="Include">
           <e p="Game.cs" t="Include" />
-          <e p="Letter.cs" t="Include" />
-          <e p="Word.cs" t="Include" />
+          <e p="GameData.cs" t="Include" />
+        </e>
+        <e p="Tests" t="Include">
+          <e p="GameTests.cs" t="Include" />
         </e>
         <e p="WeatherForecast.cs" t="Include" />
       </e>

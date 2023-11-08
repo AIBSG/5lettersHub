@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.XPath;
+using _5letters.Services;
 
 namespace _5letters.Controllers
 {
@@ -14,7 +15,7 @@ namespace _5letters.Controllers
         
         private readonly ILogger<GameController> _logger;
 
-        public static Game NowGame = Game.GameCreator("bla", "bla");//берем из бд и апи (не знаю пока как)
+        public static Game NowGame = new Game(new GameDataToStart());
 
         public GameController (ILogger<GameController> logger)
         {
