@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using _5letters.Data;
 using _5letters.Extensions;
+using _5letters.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,7 @@ namespace _5letters
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             // Add services to the container.
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -21,6 +22,7 @@ namespace _5letters
 
             builder.Services.AddControllers(options => options.UseRoutePrefix("api"));
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<ICorrectWordService, CorrectWordService>();
 
             var app = builder.Build();
             // Configure the HTTP request pipeline.
