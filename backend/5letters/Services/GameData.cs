@@ -9,9 +9,11 @@ namespace _5letters.Services
         public string VictoryWord;
         public string PlayerName;
         
-        public GameDataToStart()
+        public GameDataToStart(string token, string victoryWord, string playerName)
         {
-            //получение данных из бд
+            Token = token;
+            VictoryWord = victoryWord;
+            PlayerName = playerName;
         }
     }
     

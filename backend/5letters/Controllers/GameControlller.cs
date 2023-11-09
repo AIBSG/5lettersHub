@@ -15,7 +15,7 @@ namespace _5letters.Controllers
         
         private readonly ILogger<GameController> _logger;
 
-        public static Game NowGame = new Game(new GameDataToStart());
+        public static Game NowGame = new Game(new GameDataToStart("123", "носок", "lol"));
 
         public GameController (ILogger<GameController> logger)
         {
