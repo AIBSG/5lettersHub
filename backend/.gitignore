@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # Common IntelliJ Platform excludes
 
 # User specific
+=======
+>>>>>>> 882c8ae635ae363bbc6a3ffd6db1ad05b67caf5a
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
 **/.idea/shelf/*
