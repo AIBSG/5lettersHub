@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\app.jsx",
+      "PackagePath": "staticwebassets\\app.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\index.js",
+      "PackagePath": "staticwebassets\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\components\\GameContainer.jsx",
+      "PackagePath": "staticwebassets\\js\\components\\GameContainer.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\components\\GameContainer.module.css",
+      "PackagePath": "staticwebassets\\js\\components\\GameContainer.module.css"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\freeLetters\\freeLetters.jsx",
+      "PackagePath": "staticwebassets\\js\\freeLetters\\freeLetters.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\freeLetters\\freeLetters.module.css",
+      "PackagePath": "staticwebassets\\js\\freeLetters\\freeLetters.module.css"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\header\\header.jsx",
+      "PackagePath": "staticwebassets\\js\\header\\header.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\header\\header.module.css",
+      "PackagePath": "staticwebassets\\js\\header\\header.module.css"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\mainComponent\\mainContainer.jsx",
+      "PackagePath": "staticwebassets\\js\\mainComponent\\mainContainer.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\mainComponent\\mainContainer.module.css",
+      "PackagePath": "staticwebassets\\js\\mainComponent\\mainContainer.module.css"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\requests\\mainRequest.jsx",
+      "PackagePath": "staticwebassets\\js\\requests\\mainRequest.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\requests\\mainRequest.module.css",
+      "PackagePath": "staticwebassets\\js\\requests\\mainRequest.module.css"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\selectedLetters\\selectedLetters.jsx",
+      "PackagePath": "staticwebassets\\js\\selectedLetters\\selectedLetters.jsx"
+    },
+    {
+      "Id": "C:\\Users\\gglol\\Desktop\\miniApp_5\\miniApp_5\\backend\\5letters\\wwwroot\\js\\selectedLetters\\selectedLetters.module.css",
+      "PackagePath": "staticwebassets\\js\\selectedLetters\\selectedLetters.module.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.5letters.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.5letters.props",
+      "PackagePath": "build\\5letters.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.5letters.props",
+      "PackagePath": "buildMultiTargeting\\5letters.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.5letters.props",
+      "PackagePath": "buildTransitive\\5letters.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
