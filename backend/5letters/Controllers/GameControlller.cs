@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.XPath;
+using _5letters.Models;
 using _5letters.Services;
 
 namespace _5letters.Controllers
@@ -15,20 +17,37 @@ namespace _5letters.Controllers
         
         private readonly ILogger<GameController> _logger;
 
-        public static Game NowGame = new Game(new GameDataToStart("123", "носок", "lol"));
-
-        public GameController (ILogger<GameController> logger)
+        public static Game NowGame = new Game
         {
-            _logger = logger;
-        }
-         
+            CorrectWord = "носок",
+            Date = DateTimeOffset.Now,
+            GameStage = GameStages.GameInProgress,
+            Id = 228,
+            Words = new List<Word>(),
+            UserId = Guid.Empty
+        };
+        
+        //пользователь заходит мы получаем его id
+        // [HttpPost]
+        // public IActionResult GetUserGame(long userId)
+        // {
+        //     
+        // }
         [HttpPost]
-        public  IActionResult GameProcess([FromBody]string nowWord) 
+        public IActionResult GetWord(string nowWord)
         {
-            Game result = Game.RunGame(NowGame, nowWord);
-            return Ok(result);
+            GameService runGame = new GameService();
+            NowGame = runGame.RunGame(NowGame, nowWord);
+            return Ok(NowGame);
+        }
+
+         [HttpGet]
+        public IActionResult ReturnWord()
+        {
+            return Ok(NowGame);
         }
         
-        
+
+
     }
 }
